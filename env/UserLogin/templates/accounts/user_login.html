@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+</style>
+<body>
+<section>
+    <div id="loginbox">
+    <div id="userimage">
+        <img src="{% static 'images/user.png' %}">
+        <h1>Login</h1>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="textbox">
+        <i class="fa fa-user"></i>
+        <input type="text" placeholder="Username" name="username">
+        </div>
+        <div class="textbox">
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="Password" name="password">
+        </div>
+
+        <div class="error_msg">
+            {% if message %}
+                    {{message}}
+                    {% endif %}
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+
+</div>
+</section>
+<aside>
+    <a href="{% url 'register' %}">Not a User?Sign Up Now</a>
+</aside>
+</body>
+</html>
